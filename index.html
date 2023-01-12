@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="it">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="css/style.css">
+        <title>Campo minato</title>
+    </head>
+    <body>
+
+        <header>
+
+            <div class="logo">
+                <img src="./img/Logo.png" alt="logo">
+                <h1>Campo Minato</h1>
+            </div>
+                
+            <form class="square" action="index.html" novalidate>
+
+                <div class="check">
+        
+                    <label for="choose">Difficoltà: </label>
+                    <select name="choose" id="choose" required>
+                        <option value="">Seleziona...</option>
+                        <option value="Peaceful">Peaceful</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Hard">Hard</option>
+                    </select>
+
+                </div>
+
+                <div class="btn-square">
+                    <input type="button" value="Play" id="submit">
+                </div>
+
+            </form> 
+        </header>
+
+        <main>
+
+            <div id="cell-container">
+                
+            </div>
+
+        </main>
+
+        <footer>
+
+            <div>
+                Made width &hearts; by <a href="www.boolean.com">Boolean</a>
+            </div>
+
+        </footer>
+
+        <script src="./js/script.js"></script>
+    </body>
+</html>
