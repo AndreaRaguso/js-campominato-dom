@@ -8,6 +8,10 @@ let morti = 0;
 
 submit.onclick = function(){
 
+    cellContainer.innerHTML = "";
+    punteggio = 0;
+    morti = 0;
+    score.innerHTML = "Punteggio : " + punteggio + " " + " Bombe : " + morti;
     let choose = document.getElementById("choose").value;
 
 
@@ -37,11 +41,8 @@ submit.onclick = function(){
 
     }
 
-    bombs = Array.from({ length: 16 }, () => Math.floor(Math.random() * caselle));
-
+    bombs = Array.from({ length: 16}, () => Math.floor(Math.random() * caselle));
 }
-
-
 
 function createNewCell(num) {
     const cell = document.createElement('div');
@@ -49,10 +50,11 @@ function createNewCell(num) {
     cell.classList.add('cell');
     cell.style.height = "calc(100% / " + righe + ")";
     cell.style.width = "calc(100% / " + righe + ")";
-    cell.addEventListener('click',
-        function () {
+    cell.addEventListener('click', control);
+        function control() {
 
             let flag = 0;
+
             for(let i = 0; i < bombs.length; i++){
                 if(num == bombs[i]){
                     flag = 1;
@@ -61,7 +63,7 @@ function createNewCell(num) {
 
             if(flag == 1){
                 cell.style.background = "red";
-                morti = morti +1;
+                morti = morti + 1;
             }
             else{
                 cell.style.background = "blue";
@@ -69,23 +71,20 @@ function createNewCell(num) {
             }
 
             if (punteggio == caselle - 16){
-                alert ("vinto");
+                score.innerHTML = "Hai vinto! hai selezionato tutte le caselle!";                
             }
             else if (morti == 16 ){
-                alert("perso");
+                score.innerHTML = "Hai perso! hai schiacciato tutte le bombe";
             }
             else{
-                score.innerHTML = "Punteggio :" + punteggio
+                score.innerHTML = "Punteggio : " + punteggio + " " + " Bombe : " + morti;
             }
 
-            console.log(punteggio);
+            cell.removeEventListener('click', control);
 
         }
-        
-    );
 
     cell.innerHTML = num;
     return cell;
 
 }
-
