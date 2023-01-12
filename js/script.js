@@ -3,6 +3,8 @@ const cellContainer = document.getElementById('cell-container');
 var caselle = 0;
 var righe = 0;
 var bombs = [];
+let punteggio = 0;
+let morti = 0;
 
 submit.onclick = function(){
 
@@ -39,11 +41,11 @@ submit.onclick = function(){
 
 }
 
+
+
 function createNewCell(num) {
-
-
-
     const cell = document.createElement('div');
+    let score = document.getElementById("score");
     cell.classList.add('cell');
     cell.style.height = "calc(100% / " + righe + ")";
     cell.style.width = "calc(100% / " + righe + ")";
@@ -59,10 +61,25 @@ function createNewCell(num) {
 
             if(flag == 1){
                 cell.style.background = "red";
+                morti = morti +1;
             }
             else{
                 cell.style.background = "blue";
+                punteggio = punteggio + 1;
             }
+
+            if (punteggio == caselle - 16){
+                alert ("vinto");
+            }
+            else if (morti == 16 ){
+                alert("perso");
+            }
+            else{
+                score.innerHTML = "Punteggio :" + punteggio
+            }
+
+            console.log(punteggio);
+
         }
         
     );
